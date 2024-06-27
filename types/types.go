@@ -49,6 +49,28 @@ type TranslateBody struct {
 	Text string `json:"text" binding:"required"`
 }
 
-type OpenBody struct {
-	Request string `json:"request" binding:"required"`
+type GenerateBody struct {
+	Text string `json:"text" binding:"required"`
+}
+
+type EvaluateBody struct {
+	Text string `json:"text" binding:"required"`
+}
+
+type SummarizeBody struct {
+	Text string `json:"text" binding:"required"`
+}
+
+type ConverseBody struct {
+	Text string `json:"text" binding:"required"`
+}
+
+type LoginRequestBody struct {
+	Email    string `json:"email" binding:"required,email"`
+	Password string `json:"password" binding:"required"`
+}
+
+type SignupRequestBody struct {
+	Email    string `json:"email" binding:"required,email"`
+	Password string `json:"password" binding:"required"`
 }
