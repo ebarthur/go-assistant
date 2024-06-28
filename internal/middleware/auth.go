@@ -39,7 +39,7 @@ func AuthMiddleware(c *gin.Context) {
 			}
 
 			// find the user with token subject
-			var user db.ClientUsers
+			var user *db.ClientUsers
 			result := initializers.DB.First(&user, "id = ?", claims["subject"])
 			if result.Error != nil || user.ID == 0 {
 				c.JSON(http.StatusUnauthorized, gin.H{"error": "User not found"})

@@ -74,3 +74,35 @@ type SignupRequestBody struct {
 	Email    string `json:"email" binding:"required,email"`
 	Password string `json:"password" binding:"required"`
 }
+
+type ChangePasswordRequestBody struct {
+	Password string `json:"password" binding:"required"`
+	NewPass  string `json:"new_pass" binding:"required,min=8"`
+}
+
+type HistoryResponse struct {
+	ID       uint   `json:"id"`
+	Request  string `json:"request"`
+	Response string `json:"response"`
+	Endpoint string `json:"endpoint"`
+}
+
+type UserHistoryResponse struct {
+	UserID    uint              `json:"user_id"`
+	Histories []HistoryResponse `json:"histories"`
+}
+
+type APIErrorMessage struct {
+	ErrorMessage string `json:"error"`
+}
+
+type APISuccessMessage struct {
+	SuccessMessage string `json:"success"`
+	Data           any    `json:"data"`
+}
+
+type NewSnippetRequest struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Code        string `json:"code"`
+}

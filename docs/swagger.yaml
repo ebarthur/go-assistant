@@ -1,0 +1,255 @@
+basePath: /api/v1
+definitions:
+  types.APIErrorMessage:
+    properties:
+      error:
+        type: string
+    type: object
+  types.APISuccessMessage:
+    properties:
+      data: {}
+      success:
+        type: string
+    type: object
+host: localhost:10000
+info:
+  contact:
+    email: arthurebenezer@aol.com
+    name: Ebenezer Arthur
+    url: https://ebarthur.vercel.app
+  description: API Documentation for Go-assistant
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/Go-assistant
+  title: Go-assistant API
+  version: "1.0"
+paths:
+  /ai/converse:
+    post:
+      consumes:
+      - application/json
+      description: Engage in a conversation, respond to user input and maintain context
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.APISuccessMessage'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+      security:
+      - JWT: []
+      summary: AI Converse
+      tags:
+      - conversation
+  /ai/evaluate:
+    post:
+      consumes:
+      - application/json
+      description: Evaluate the accuracy and quality of text. Provide feedback on
+        the text.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.APISuccessMessage'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+      security:
+      - JWT: []
+      summary: AI Evaluate
+      tags:
+      - evaluate
+  /ai/generate:
+    post:
+      consumes:
+      - application/json
+      description: Generate responses based on user input
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.APISuccessMessage'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+      security:
+      - JWT: []
+      summary: AI Generate
+      tags:
+      - generate
+  /ai/history:
+    get:
+      consumes:
+      - application/json
+      description: Handles the retrieval of user history
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.APISuccessMessage'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+      security:
+      - JWT: []
+      summary: Get User History
+      tags:
+      - generate
+  /ai/summarize:
+    post:
+      consumes:
+      - application/json
+      description: Summarize text to a concise version
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.APISuccessMessage'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+      security:
+      - JWT: []
+      summary: AI Summarize
+      tags:
+      - summarize
+  /ai/translate/:language:
+    post:
+      consumes:
+      - application/json
+      description: Translate text to a specified language
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.APISuccessMessage'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+      security:
+      - JWT: []
+      summary: AI Translate
+      tags:
+      - translate
+  /auth/reset-password:
+    post:
+      consumes:
+      - application/json
+      description: Reset user password
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.APISuccessMessage'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+      security:
+      - JWT: []
+      summary: Reset Password
+      tags:
+      - auth
+  /auth/sign-in:
+    post:
+      consumes:
+      - application/json
+      description: Login users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.APISuccessMessage'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+      summary: Login
+      tags:
+      - auth
+  /auth/sign-up:
+    post:
+      consumes:
+      - application/json
+      description: Sign-up new users
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/types.APISuccessMessage'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.APIErrorMessage'
+      summary: SignUp
+      tags:
+      - auth
+securityDefinitions:
+  JWT:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
