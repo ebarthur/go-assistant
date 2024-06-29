@@ -100,9 +100,3 @@ type APISuccessMessage struct {
 	SuccessMessage string `json:"success"`
 	Data           any    `json:"data"`
 }
-
-type NewSnippetRequest struct {
-	Title       string `json:"title"`
-	Description string `json:"description"`
-	Code        string `json:"code"`
-}

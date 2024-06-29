@@ -317,6 +317,17 @@ const docTemplate = `{
                     "auth"
                 ],
                 "summary": "Login",
+                "parameters": [
+                    {
+                        "description": "login",
+                        "name": "Login",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.LoginRequestBody"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -392,6 +403,21 @@ const docTemplate = `{
                     "type": "string"
                 }
             }
+        },
+        "types.LoginRequestBody": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
         }
     },
     "securityDefinitions": {
@@ -409,12 +435,10 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:10000",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
-	Title:            "Go-assistant API",
+	Title:            "Go-Assistant API",
 	Description:      "API Documentation for Go-assistant",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
-	LeftDelim:        "{{",
-	RightDelim:       "}}",
 }
 
 func init() {

@@ -6,7 +6,7 @@ import (
 	"groq-api/initializers"
 )
 
-//	@title			            Go-assistant API
+//	@title			            Go-Assistant API
 //	@version		            1.0
 //	@description	            API Documentation for Go-assistant
 //	@termsOfService	            http://swagger.io/terms/Go-assistant

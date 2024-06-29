@@ -11,6 +11,16 @@ definitions:
       success:
         type: string
     type: object
+  types.LoginRequestBody:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
 host: localhost:10000
 info:
   contact:
@@ -22,7 +32,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/Go-assistant
-  title: Go-assistant API
+  title: Go-Assistant API
   version: "1.0"
 paths:
   /ai/converse:
@@ -206,6 +216,13 @@ paths:
       consumes:
       - application/json
       description: Login users
+      parameters:
+      - description: login
+        in: body
+        name: Login
+        required: true
+        schema:
+          $ref: '#/definitions/types.LoginRequestBody'
       produces:
       - application/json
       responses:

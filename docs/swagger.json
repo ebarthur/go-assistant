@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "API Documentation for Go-assistant",
-        "title": "Go-assistant API",
+        "title": "Go-Assistant API",
         "termsOfService": "http://swagger.io/terms/Go-assistant",
         "contact": {
             "name": "Ebenezer Arthur",
@@ -311,6 +311,17 @@
                     "auth"
                 ],
                 "summary": "Login",
+                "parameters": [
+                    {
+                        "description": "login",
+                        "name": "Login",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.LoginRequestBody"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -383,6 +394,21 @@
             "properties": {
                 "data": {},
                 "success": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.LoginRequestBody": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
                     "type": "string"
                 }
             }
